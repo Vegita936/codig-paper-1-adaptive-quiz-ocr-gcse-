@@ -2,15 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OCR GCSE Computer Science Adaptive Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Welcome to the OCR GCSE Computer Science Adaptive Quiz</h1>
-    <p>This quiz adapts to your learning pace and knowledge.</p>
-    <form id="quizForm">
-        <!-- Quiz questions will go here -->
-        <button type="submit">Submit Quiz</button>
-    </form>
+    <header>
+        <h1>OCR GCSE Computer Science Adaptive Quiz</h1>
+    </header>
+    <main>
+        <section id="quiz">
+            <h2>Quiz Topics</h2>
+            <ul>
+                <li>Binary</li>
+                <li>CPU</li>
+                <li>Networks</li>
+                <li>Security</li>
+                <li>Storage</li>
+                <li>Sound</li>
+                <li>Images</li>
+                <li>Operating Systems</li>
+                <li>Ethics</li>
+                <li>Embedded Systems</li>
+            </ul>
+            <button id="start-quiz">Start Quiz</button>
+            <div id="quiz-container" style="display:none;">
+                <!-- Quiz will be dynamically generated here -->
+            </div>
+            <div id="results" style="display:none;">
+                <h3>Your Results:</h3>
+                <p id="score"></p>
+                <button id="retry-quiz">Retry Quiz</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 OCR GCSE Computer Science Quiz</p>
+    </footer>
 </body>
 </html>
