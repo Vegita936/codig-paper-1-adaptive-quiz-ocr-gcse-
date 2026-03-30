@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Quiz</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .question { margin-bottom: 20px; }
+        .results { margin-top: 30px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>OCR GCSE Computer Science Adaptive Quiz</h1>
+    <div id="quiz"></div>
+    <button id="submit">Submit</button>
+    <div class="results" id="results"></div>
+    <script>
+        const questions = [
+            // Add 100+ quiz questions and possible answers here
+            { question: 'What is a computer?', answers: ['A machine', 'A person', 'An animal', 'None of the above'], correct: 0 },
+            { question: 'What does CPU stand for?', answers: ['Central Processing Unit', 'Computer Personal Unit', 'Central Protocol Unit', 'None of the above'], correct: 0 },
+            // Additional questions...
+        ];
+        let questionIndex = 0;
+        let score = 0;
+
+        const quizContainer = document.getElementById('quiz');
+        const resultsContainer = document.getElementById('results');
+
+        function loadQuestion() {
+            if (questionIndex < questions.length) {
+                const currentQuestion = questions[questionIndex];
+                quizContainer.innerHTML = `<div class="question">${currentQuestion.question}</div>` +
+                    currentQuestion.answers.map((answer, index) => `<div><input type="radio" value="${index}" name="question${questionIndex}" /> ${answer}</div>`).join('');
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            resultsContainer.innerHTML = `You scored ${score} out of ${questions.length}`;
+            localStorage.setItem('quizScore', score);
+        }
+
+        document.getElementById('submit').addEventListener('click', () => {
+            const selectedAnswer = document.querySelector(`input[name="question${questionIndex}"]:checked`);
+            if (selectedAnswer) {
+                if (parseInt(selectedAnswer.value) === questions[questionIndex].correct) {
+                    score++;
+                }
+                questionIndex++;
+                loadQuestion();
+            }
+        });
+
+        loadQuestion();
+    </script>
+</body>
+</html>
